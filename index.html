@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="description" content="Convite de casamento">
+  <meta name="description" content="Convite de casamento de Ancarli Lanzzarin e Fabiane Lanzzarin">
   <title>Convite de Casamento - Ancarli & Fabiane</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,12 +64,25 @@
       overflow: hidden;
       border: 3px solid var(--primary-color);
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: relative;
     }
 
     .foto-casal img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .foto-casal::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.03);
+      border-radius: 50%;
     }
 
     h1 {
@@ -129,6 +142,15 @@
       margin-top: 6px;
       color: var(--primary-color);
       line-height: 1.3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nomes .e {
+      font-size: 1.2rem;
+      margin: 4px 0;
+      color: var(--secondary-color);
     }
 
     .contador-regressivo {
@@ -216,10 +238,16 @@
       touch-action: manipulation;
     }
 
-    /* Otimizações específicas para iOS */
-    @supports (-webkit-touch-callout: none) {
-      .convite {
-        -webkit-overflow-scrolling: touch;
+    /* Otimizações para imagem responsiva */
+    .foto-casal {
+      width: 120px;
+      height: 120px;
+    }
+
+    @media (min-width: 768px) {
+      .foto-casal {
+        width: 150px;
+        height: 150px;
       }
     }
 
@@ -244,8 +272,8 @@
       }
       
       .foto-casal {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
       }
       
       .contador-regressivo div {
@@ -255,6 +283,12 @@
       .contador-regressivo span {
         font-size: 1.5rem;
       }
+    }
+
+    /* Garantir que a imagem não ultrapasse o container */
+    .foto-casal img {
+      max-width: 100%;
+      height: auto;
     }
   </style>
 </head>
@@ -267,7 +301,12 @@
 
   <div class="convite">
     <div class="foto-casal">
-      <img src="foto-casal.jpg" alt="Ancarli e Fabiane" loading="lazy">
+      <!-- Imagem otimizada com fallback -->
+      <picture>
+        <source srcset="foto-casal.webp" type="image/webp">
+        <source srcset="foto-casal.jpg" type="image/jpeg"> 
+        <img src="foto-casal.jpg" alt="Ancarli e Fabiane" loading="lazy" width="150" height="150">
+      </picture>
     </div>
     
     <h1>Nosso Grande Dia</h1>
@@ -293,11 +332,11 @@
     </div>
     
     <p class="agradecimento">Com carinho,</p>
-   <p class="nomes">
-  Ancarli Lanzzarin<br>
-  e<br>
-  Fabiane Lanzzarin
-</p>
+    <div class="nomes">
+      <span>Ancarli Lanzzarin</span>
+      <span class="e">e</span>
+      <span>Fabiane Lanzzarin</span>
+    </div>
   </div>
 
   <script>
