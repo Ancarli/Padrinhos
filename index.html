@@ -71,6 +71,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       transition: transform 0.3s ease;
     }
 
@@ -239,15 +240,10 @@
     }
 
     /* Otimizações para imagem responsiva */
-    .foto-casal {
-      width: 120px;
-      height: 120px;
-    }
-
     @media (min-width: 768px) {
       .foto-casal {
-        width: 130px;
-        height: 130px;
+        width: 180px;
+        height: 180px;
       }
     }
 
@@ -272,8 +268,8 @@
       }
       
       .foto-casal {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
       }
       
       .contador-regressivo div {
@@ -284,16 +280,9 @@
         font-size: 1.5rem;
       }
     }
-
-    /* Garantir que a imagem não ultrapasse o container */
-    .foto-casal img {
-      max-width: 100%;
-      height: auto;
-    }
   </style>
 </head>
 <body>
-  <!-- Controle de áudio otimizado para touch -->
   <button class="audio-control" aria-label="Controle de música">♪</button>
   <audio id="bgMusic" loop>
     <source src="https://cdn.pixabay.com/download/audio/2023/03/30/audio_66b9e6f31a.mp3" type="audio/mp3">
@@ -301,12 +290,7 @@
 
   <div class="convite">
     <div class="foto-casal">
-      <!-- Imagem otimizada com fallback -->
-      <picture>
-        <source srcset="foto-casal.webp" type="image/webp">
-        <source srcset="foto-casal.jpg" type="image/jpeg"> 
-        <img src="foto-casal.jpg" alt="Ancarli e Fabiane" loading="lazy" width="150" height="150">
-      </picture>
+      <img src="foto-casal.jpg" alt="Ancarli e Fabiane" loading="lazy">
     </div>
     
     <h1>Nosso Grande Dia</h1>
@@ -382,9 +366,9 @@
       
       // Posição horizontal aleatória
       const startX = Math.random() * window.innerWidth;
-      const endX = startX + (Math.random() * 100 - 50); // Movimento lateral aleatório
+      const endX = startX + (Math.random() * 100 - 50);
       
-      // Cor aleatória (tons de vermelho/rosa)
+      // Cor aleatória
       const colors = ['#ff6b6b', '#ff8e8e', '#ff7676', '#ff5252', '#ff3838'];
       heart.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
       
@@ -393,15 +377,11 @@
       heart.style.width = `${size}px`;
       heart.style.height = `${size}px`;
       
-      // Posicionar no topo da tela
-      heart.style.left = `${startX}px`;
-      heart.style.top = '-20px';
-      
       // Definir as variáveis CSS para a animação
       heart.style.setProperty('--start-x', `${startX}px`);
       heart.style.setProperty('--end-x', `${endX}px`);
       
-      // Duração da animação (entre 5 e 10 segundos)
+      // Duração da animação
       const duration = Math.random() * 5 + 5;
       
       // Aplicar animação
@@ -417,12 +397,9 @@
 
     // Iniciar chuva de corações
     function startHeartRain() {
-      // Criar alguns corações imediatamente
       for (let i = 0; i < 10; i++) {
         setTimeout(createFallingHeart, i * 300);
       }
-      
-      // Continuar criando corações periodicamente
       return setInterval(createFallingHeart, 500);
     }
 
