@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Convite de casamento de Ancarli Lanzzarin e Fabiane Lanzzarin">
+  <title>Convite de Casamento - Ancarli & Fabiane</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #a26e5c;
+      --secondary-color: #7d4e3d;
+      --accent-color: #e60026;
+      --text-color: #444;
+      --light-bg: #fdf6f0;
+      --white: #fff;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    body {
+      margin: 0;
+      background: var(--light-bg);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      color: var(--text-color);
+      line-height: 1.5;
+      -webkit-text-size-adjust: 100%;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .convite {
+      background: var(--white);
+      margin: 20px 16px;
+      padding: 28px 16px;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      position: relative;
+      max-width: 100%;
+      border: 1px solid rgba(162, 110, 92, 0.15);
+      transform: translateZ(0);
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .foto-casal {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      overflow: hidden;
+      border: 3px solid var(--primary-color);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .foto-casal img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      line-height: 1.2;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+    }
+
+    p {
+      font-size: 1rem;
+      color: var(--text-color);
+      margin-bottom: 14px;
+      text-align: center;
+    }
+
+    .destaque {
+      font-size: 1.1rem;
+      color: var(--primary-color);
+      font-weight: 500;
+      margin: 22px 0;
+      padding: 14px 12px;
+      background-color: rgba(162, 110, 92, 0.06);
+      border-radius: 8px;
+      border-left: 2px solid var(--primary-color);
+    }
+
+    .endereco {
+      font-size: 0.95rem;
+      color: var(--text-color);
+      margin: 20px 0;
+    }
+
+    .endereco a {
+      color: var(--primary-color);
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+      display: inline-block;
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--primary-color);
+      line-height: 1.4;
+    }
+
+    .agradecimento {
+      margin-top: 26px;
+      font-style: italic;
+      color: var(--secondary-color);
+      font-size: 1rem;
+    }
+
+    .nomes {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.8rem;
+      margin-top: 6px;
+      color: var(--primary-color);
+      line-height: 1.3;
+    }
+
+    .contador-regressivo {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 25px 0;
+      flex-wrap: wrap;
+    }
+
+    .contador-regressivo div {
+      text-align: center;
+      min-width: 80px;
+    }
+
+    .contador-regressivo span {
+      display: block;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    /* Estilo para os corações */
+    .heart-fall {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background-color: var(--accent-color);
+      transform: rotate(45deg);
+      z-index: 2;
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+
+    .heart-fall::before,
+    .heart-fall::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: inherit;
+      border-radius: 50%;
+    }
+
+    .heart-fall::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart-fall::after {
+      left: -10px;
+      top: 0;
+    }
+
+    /* Animação de queda dos corações */
+    @keyframes heartFalling {
+      0% {
+        transform: translate(var(--start-x), -10vh) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--end-x), 100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    /* Controles de áudio mobile-friendly */
+    .audio-control {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      background: var(--white);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      z-index: 10;
+      border: none;
+      color: var(--primary-color);
+      font-size: 1.1rem;
+      touch-action: manipulation;
+    }
+
+    /* Otimizações específicas para iOS */
+    @supports (-webkit-touch-callout: none) {
+      .convite {
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+
+    /* Melhorias para telas muito pequenas */
+    @media (max-width: 360px) {
+      .convite {
+        padding: 24px 12px;
+        margin: 16px 12px;
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .destaque {
+        font-size: 1rem;
+        padding: 12px 10px;
+      }
+      
+      .nomes {
+        font-size: 1.5rem;
+      }
+      
+      .foto-casal {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .contador-regressivo div {
+        min-width: 70px;
+      }
+      
+      .contador-regressivo span {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Controle de áudio otimizado para touch -->
+  <button class="audio-control" aria-label="Controle de música">♪</button>
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2023/03/30/audio_66b9e6f31a.mp3" type="audio/mp3">
+  </audio>
+
+  <div class="convite">
+    <div class="foto-casal">
+      <img src="foto-casal.jpg" alt="Ancarli e Fabiane" loading="lazy">
+    </div>
+    
+    <h1>Nosso Grande Dia</h1>
+    
+    <p>Queridos padrinhos,</p>
+    <p>Vocês fazem parte da nossa história e do nosso coração.</p>
+    <p>Agora que aceitaram estar ao nosso lado, queremos compartilhar esse momento único com vocês.</p>
+    
+    <div class="destaque">
+      O casamento será no dia <strong>09 de setembro de 2025</strong>, às <strong>12h</strong>!
+    </div>
+    
+    <div class="contador-regressivo">
+      <div><span id="dias"></span> dias</div>
+      <div><span id="horas"></span> horas</div>
+      <div><span id="minutos"></span> minutos</div>
+    </div>
+    
+    <div class="endereco">
+      Local: <a href="https://maps.app.goo.gl/?link=https://www.google.com/maps?q=R.+Blumenau,+953+-+5º+Andar+-+América,+Joinville+-+SC,+89204-251&apn=com.google.android.apps.maps&amv=0" target="_blank" rel="noopener noreferrer">
+        R. Blumenau, 953 – 5º Andar – América, Joinville – SC, 89204-251
+      </a>
+    </div>
+    
+    <p class="agradecimento">Com carinho,</p>
+    <p class="nomes">Ancarli Lanzzarin e Fabiane Lanzzarin</p>
+  </div>
+
+  <script>
+    // Controle de áudio com touch otimizado
+    const audioControl = document.querySelector('.audio-control');
+    const bgMusic = document.getElementById('bgMusic');
+    
+    function initAudio() {
+      audioControl.addEventListener('click', handleAudioControl, { passive: true });
+      audioControl.addEventListener('touchend', handleAudioControl, { passive: true });
+    }
+    
+    function handleAudioControl(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      if (bgMusic.paused) {
+        bgMusic.play().then(() => {
+          audioControl.textContent = '♫';
+          audioControl.title = 'Pausar música';
+        }).catch(err => {
+          console.log('Reprodução bloqueada:', err);
+          audioControl.textContent = '♪';
+          audioControl.title = 'Tocar música (clique para ativar)';
+        });
+      } else {
+        bgMusic.pause();
+        audioControl.textContent = '♪';
+        audioControl.title = 'Tocar música';
+      }
+      
+      return false;
+    }
+    
+    // Inicialização segura para mobile
+    document.addEventListener('DOMContentLoaded', initAudio);
+    document.addEventListener('touchstart', initAudio, { once: true, passive: true });
+
+    // Função para criar corações caindo
+    function createFallingHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart-fall';
+      
+      // Posição horizontal aleatória
+      const startX = Math.random() * window.innerWidth;
+      const endX = startX + (Math.random() * 100 - 50); // Movimento lateral aleatório
+      
+      // Cor aleatória (tons de vermelho/rosa)
+      const colors = ['#ff6b6b', '#ff8e8e', '#ff7676', '#ff5252', '#ff3838'];
+      heart.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      
+      // Tamanho aleatório
+      const size = Math.random() * 15 + 10;
+      heart.style.width = `${size}px`;
+      heart.style.height = `${size}px`;
+      
+      // Posicionar no topo da tela
+      heart.style.left = `${startX}px`;
+      heart.style.top = '-20px';
+      
+      // Definir as variáveis CSS para a animação
+      heart.style.setProperty('--start-x', `${startX}px`);
+      heart.style.setProperty('--end-x', `${endX}px`);
+      
+      // Duração da animação (entre 5 e 10 segundos)
+      const duration = Math.random() * 5 + 5;
+      
+      // Aplicar animação
+      heart.style.animation = `heartFalling ${duration}s linear forwards`;
+      
+      document.body.appendChild(heart);
+      
+      // Remover o coração após a animação terminar
+      setTimeout(() => {
+        heart.remove();
+      }, duration * 1000);
+    }
+
+    // Iniciar chuva de corações
+    function startHeartRain() {
+      // Criar alguns corações imediatamente
+      for (let i = 0; i < 10; i++) {
+        setTimeout(createFallingHeart, i * 300);
+      }
+      
+      // Continuar criando corações periodicamente
+      return setInterval(createFallingHeart, 500);
+    }
+
+    // Contador regressivo
+    function updateCountdown() {
+      const weddingDate = new Date('2025-09-09T12:00:00');
+      const now = new Date();
+      const diff = weddingDate - now;
+      
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      
+      document.getElementById('dias').textContent = days;
+      document.getElementById('horas').textContent = hours;
+      document.getElementById('minutos').textContent = minutes;
+    }
+
+    // Inicialização
+    function init() {
+      let heartInterval = startHeartRain();
+      updateCountdown();
+      setInterval(updateCountdown, 60000);
+      
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          clearInterval(heartInterval);
+          bgMusic.pause();
+          audioControl.textContent = '♪';
+        } else {
+          heartInterval = startHeartRain();
+        }
+      }, { passive: true });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  </script>
+</body>
+</html>
